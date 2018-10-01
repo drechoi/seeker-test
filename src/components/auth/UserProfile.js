@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Image, Label } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
 
 class UserProfile extends Component{
     componentWillMount(){

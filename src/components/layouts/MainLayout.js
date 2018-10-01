@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ConnectedRouter  } from 'connected-react-router';
-import { Link } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 
 
@@ -11,9 +10,8 @@ import Home from '../Dummy1';
 import About from '../Dummy2';
 import LoginCallback from '../LoginCallback';
 import StockView from '../StockView';
-import UserProfile from '../auth/UserProfile';
 
-import {Menu, Container} from 'semantic-ui-react';
+import {Container} from 'semantic-ui-react';
 
 const handleAuthentication = (auth, nextState, replace) => {
 	if (/access_token|id_token|error/.test(nextState.location.hash)) {

@@ -5,7 +5,7 @@ import defaultReducer from './default-reducer';
 
 const rootReducers = combineReducers({
     // add reducer files references here
-    default: defaultReducer
+    stockInfo: defaultReducer
 });
 
 export default rootReducers;

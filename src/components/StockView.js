@@ -94,7 +94,7 @@ class StockView extends Component {
                         margin={{top: 5, right: 30, left: 20, bottom: 5}}                        
                         >
                 <XAxis dataKey="month"/>
-                <YAxis type='number' domain={[8.0, 12.0]}/>
+                <YAxis type='number' domain={['dataMin', 'dataMax']}/>
                 
                 <Line type="monotone" dataKey="price" stroke="#82ca9d" />
                 </LineChart>
@@ -115,7 +115,7 @@ const mapStateToProps = (state) => {
     console.log("reducer state");
     console.log(state);
     return {
-        Stock: initialState
+        Stock: state.stockInfo
     }
 }
 

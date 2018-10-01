@@ -1,14 +1,23 @@
 import React, {Component} from 'react';
-import {Menu, Input} from 'semantic-ui-react';
+import {Menu, Input, Button} from 'semantic-ui-react';
+import {withRouter} from 'react-router-dom';
 import UserProfile from '../auth/UserProfile';
 
-const onClick = (e) => {
-    alert("hi" + e);
+const onClick = (e, data) => {
+    //alert("hi" + e);
+    console.log(e);
+    console.log(data);
+    console.log(e.target);
+    console.log(e.target.value);
 }
 
 class Header extends Component {	
 	render() {
-		const auth = this.props.auth;
+        const auth = this.props.auth;
+        const searchStock = (path) => {
+            this.props.history.push(`/stock/${path}`);
+        }
+        var searchBoxValue = "";
 
 		return (
 			<div>
@@ -21,7 +30,7 @@ class Header extends Component {
                     )
                 }
                 <Menu.Item>
-                    <Input icon='search' placeholder='Search...' size='tiny' onClick={onClick} />
+                    <Input action={ <Button icon='search' content='Search' onClick={()=>searchStock(this.searchBoxValue)} />} placeholder='0001 or 0005 only' onChange={(e,data)=>{this.searchBoxValue = data.value}}  />
                 </Menu.Item>
 
                 {
@@ -40,4 +49,4 @@ class Header extends Component {
 	}
 };
 
-export default Header;
+export default withRouter(Header);
