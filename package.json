@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "auth0-js": "^9.8.0",
+    "chart.js": "^2.7.2",
     "connected-react-router": "^4.5.0",
     "history": "^4.7.2",
     "jwt-decode": "^2.2.0",
     "react": "^16.5.2",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

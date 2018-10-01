@@ -4,7 +4,7 @@ class Dummy2 extends React.Component{
     render(){
         console.log("Dummy2");
         return (
-            <p>This is callback</p>
+            <p>This is Dummy2</p>
         );
     }
 }
