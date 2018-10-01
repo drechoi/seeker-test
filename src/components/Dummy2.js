@@ -1,5 +1,12 @@
 import React from 'react';
 
-export default () => (
-    <p>This is callback</p>
-);
+class Dummy2 extends React.Component{
+    render(){
+        console.log("Dummy2");
+        return (
+            <p>This is callback</p>
+        );
+    }
+}
+
+export default Dummy2;
