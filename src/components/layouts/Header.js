@@ -30,7 +30,7 @@ class Header extends Component {
                     )
                 }
                 <Menu.Item>
-                    <Input action={ <Button icon='search' content='Search' onClick={()=>searchStock(this.searchBoxValue)} />} placeholder='0001 or 0005 only' onChange={(e,data)=>{this.searchBoxValue = data.value}}  />
+                    <Input action={ <Button icon='search' content='Search' onClick={()=>searchStock(this.searchBoxValue)} />} placeholder='0001 - 0005 only' onChange={(e,data)=>{this.searchBoxValue = data.value}}  />
                 </Menu.Item>
 
                 {
