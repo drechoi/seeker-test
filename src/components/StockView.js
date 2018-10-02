@@ -2,27 +2,39 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { SegmentGroup, Segment, Header, Label, Grid } from 'semantic-ui-react';
 import {LineChart, XAxis, YAxis, Line} from 'recharts';
+import {fetchStockInfo} from '../actions/stockInfoAction';
 
+// const stockInfo = {
+//     stockCode: "00001",
+//     stockName: "CKH Holdings",
+//     priceCurrent: 10.0,
+//     priceChange: "+0.2",
+//     historialData: [
+//         {month: 'May', price: 10.5},
+//         {month: 'July', price: 10.3},
+//         {month: 'June', price: 9.8},
+//         {month: 'Aug', price: 9.9},
+//         {month: 'Sept', price: 10.2},
 
+//     ],
 
-const stockInfo = {
-    stockCode: "00001",
-    stockName: "CKH Holdings",
-    priceCurrent: 10.0,
-    priceChange: "+0.2",
-    historialData: [
-        {month: 'May', price: 10.5},
-        {month: 'July', price: 10.3},
-        {month: 'June', price: 9.8},
-        {month: 'Aug', price: 9.9},
-        {month: 'Sept', price: 10.2},
-
-    ],
-
-};
+// };
 
 class StockView extends Component {
     componentDidMount(){
+        console.log("component did mount");
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if(this.props.match.params.id !== nextProps.match.params.id) {
+            // this.props.getUserDetails(nextProps.match.params.id);
+            this.props.loadData(nextProps.match.params.id);
+        }
+    }
+
+    componentWillMount(){
+        console.log("component will mount");
+        this.props.loadData(this.props.match.params.id);
         
     }
 
@@ -84,13 +96,12 @@ class StockView extends Component {
     render(){
         console.log("Stock view render:");
         console.log(this.props);
-        console.log(this.props.match.params.id);
-
+        
         return (
             <React.Fragment>
-                { this.renderMainInfo(stockInfo) }
+                { this.renderMainInfo(this.props.stockInfo) }
                 
-                <LineChart width={600} height={300} data={stockInfo.historialData}
+                <LineChart width={600} height={300} data={this.props.stockInfo.historialData}
                         margin={{top: 5, right: 30, left: 20, bottom: 5}}                        
                         >
                 <XAxis dataKey="month"/>
@@ -99,29 +110,23 @@ class StockView extends Component {
                 <Line type="monotone" dataKey="price" stroke="#82ca9d" />
                 </LineChart>
 
-                { this.renderBasicInfo(stockInfo) }                
+                { this.renderBasicInfo(this.props.stockInfo) }                
             </React.Fragment>
         )
     }
 }
 
-const initialState = {
-    code: "0001",
-    name: "DUMMY",
-    price: 10.0,
-};
-
 const mapStateToProps = (state) => {
     console.log("reducer state");
     console.log(state);
     return {
-        Stock: state.stockInfo
+        stockInfo: state.stockInfo
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => (
     {
-        dummy: ()=>dispatch(()=>{})
+        loadData: (stockCode)=>dispatch(fetchStockInfo(stockCode))
     }
 );
   
