@@ -1,14 +1,18 @@
 # Seeker Test
 
-Require node, npm, nodemon, cors... 
 
-please make sure you have installed everything before running the programme
+## Setup & install packages
 
-The server will run at port 5000, client using port 3000
+```
+npm install
+```
 
-To run server:
+### To run server:
+```
 npm run server
+```
 
-To run client:
+### To run client:
+```
 npm start
-
+```
